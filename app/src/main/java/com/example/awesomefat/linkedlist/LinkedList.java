@@ -60,4 +60,41 @@ public class LinkedList
         nodeToReturn.setNextNode(null);
         return nodeToReturn;
     }
+
+    public void addEnd(String value)
+    {
+        Node n = new Node(value);
+        if (this.head == null)
+        {
+            this.head = n;
+            return;
+        }
+        Node currNode = this.head;
+        while (currNode.getNextNode() != null)
+            currNode = currNode.getNextNode();
+        currNode.setNextNode(n);
+    }
+
+    public Node removeEnd()
+    {
+        if (this.head == null)
+        {
+            return null;
+        }
+        if (this.head.getNextNode() == null)
+        {
+            Node n = this.head;
+            this.head = null;
+            return n;
+        }
+        Node nodeA = this.head;
+        Node nodeB = nodeA.getNextNode();
+        while (nodeB != null && nodeB.getNextNode() != null)
+        {
+            nodeA = nodeA.getNextNode();
+            nodeB = nodeB.getNextNode();
+        }
+        nodeA.setNextNode(null);
+        return nodeB;
+    }
 }
